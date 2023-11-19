@@ -26,4 +26,7 @@ jobs:
       run: docker build --file Dockerfile --pull --compress --tag $DOCKER_REPO:$APP_VERSION .
       
     - name: Push image
+      env: 
+        DOCKER_REPO: ${{vars.DOCKER_REPO}}
+        APP_VERSION: ${{vars.APP_VERSION}}
       run: docker push $DOCKER_REPO:$APP_VERSION
